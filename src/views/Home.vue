@@ -27,8 +27,8 @@ export default {
       let item = await axios.get(
       `https://apis.postcode-jp.com/api/v4/postcodes/${this.zip}?apiKey=ZCxePaJWxCZcvFWy8cuRrA01Sca4rCOZ8HsGePl`
       );
-      this.allAddress = item.data.allAddress;
-      console.log(this.allAddress)
+      this.allAddress = item.data[0].allAddress;
+      console.log(item)
     },
     // outputAddress() {
     //   this.allAddress = this.item.data.allAddress;
