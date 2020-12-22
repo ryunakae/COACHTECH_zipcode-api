@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <input type="text" v-model="zipcode" maxlength="7" minlength="7" />
+    <input type="text" v-model="zipcode" maxlength="8" />
     <button @click="getAddressByZip()">Zip Code</button>
+    <!-- <button @click="outputAddress()">output</button> -->
     <p>Address：{{ allAddress }}</p>
     <p>〒{{ zip }}</p>
   </div>
@@ -17,22 +18,22 @@ export default {
     return {
       zip: "",
       allAddress: "",
+      item: "",
     };
   },
   methods: {
     async getAddressByZip() {
-      this.zip = await this.zipcode
+      this.zip = this.zipcode
       let item = await axios.get(
       `https://apis.postcode-jp.com/api/v4/postcodes/${this.zip}?apiKey=ZCxePaJWxCZcvFWy8cuRrA01Sca4rCOZ8HsGePl`
-    );
-    this.allAddress = item.data.allAddress;
-    }
+      );
+      this.allAddress = item.data.allAddress;
+      console.log(this.allAddress)
+    },
+    // outputAddress() {
+    //   this.allAddress = this.item.data.allAddress;
+    //   console.log(this.allAddress)
+    // }
   },
-// async created() {
-//     let item = await axios.get(
-//       `https://apis.postcode-jp.com/api/v4/postcodes/${this.zip}?apiKey=ZCxePaJWxCZcvFWy8cuRrA01Sca4rCOZ8HsGePl`
-//     );
-//     this.allAddress = item.data.allAddress;
-//   }
 }
 </script>
