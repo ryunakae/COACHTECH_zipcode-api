@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <input type="text" v-model="zipcode" maxlength="8" />
-    <button @click="getAddressByZip()">Zip Code</button>
+    <button @click="getAddressByZip">Zip Code</button>
     <!-- <button @click="outputAddress()">output</button> -->
     <p>Address：{{ allAddress }}</p>
     <p>〒{{ zip }}</p>
